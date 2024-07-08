@@ -7,7 +7,7 @@
 
 ## project 1- color changer
 
-```
+```javascript
 const buttons= document.querySelectorAll('.button')
 const body=document.querySelector('body')
 
@@ -34,4 +34,39 @@ buttons.forEach(function(b){
 
 ```
 
+## project 2- BMI Generator
+```javascript
+const form=document.querySelector('form')
 
+form.addEventListener('submit',function(e){
+  e.preventDefault()
+
+  // bcoz value string me milegi and we have to parse it to integer
+  const height=parseInt(document.querySelector('#height').value)
+  const weight=parseInt(document.querySelector('#weight').value)
+  const result=document.querySelector('#results')
+
+  if(height=='' || height<0 || isNaN(height)){
+    result.innerHTML="Please enter valid height"
+  }
+  else if(weight=='' || weight<0 || isNaN(weight)){
+    result.innerHTML="Please enter valid weight"
+  }
+  else{
+    const bmi=(weight/ ((height*height)/10000)).toFixed(2)
+    if(bmi<=18.6){
+      results.innerHTML=`Your BMI is ${bmi} and you are Under Weight`
+
+    }
+    else if(bmi>18.6 && bmi<=24.9){
+      results.innerHTML=`Your BMI is ${bmi} and you are Normal Range`
+      
+    }
+    else{
+      results.innerHTML=`Your BMI is ${bmi} and you are Over Weight`
+
+    }
+    
+  }
+})
+```
