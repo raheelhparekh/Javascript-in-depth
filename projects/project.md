@@ -175,3 +175,36 @@ function newGame() {
 }
 
 ```
+### project 6 - Unlimited background changing
+```javascript
+const randomColor=function(){
+  const hex="0123456789ABCDEF"
+  let color='#'
+  for(let i=0;i<6;i++){
+    color+=hex[Math.floor(Math.random()*16)]
+  }
+  return color;
+}
+let interval;
+const startChangingColor=function(){
+  // clean code ke liye if case use kiya he
+  if(!interval){
+    interval=setInterval(changeBackgroundColor,1000)
+  }
+  
+  function changeBackgroundColor(){
+    document.body.style.backgroundColor=randomColor();
+  }
+}
+const stopChangingColor=function(){
+  clearInterval(interval)
+  interval=null; // good way to write code
+  // cleaning up variable , memmory 
+}
+
+const start=document.querySelector('#start').addEventListener('click', startChangingColor)
+
+const stop=document.querySelector('#stop').addEventListener('click', stopChangingColor)
+
+
+```
